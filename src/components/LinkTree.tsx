@@ -9,10 +9,14 @@ interface Link {
 
 const LinkTree: React.FC = () => {
   const links: Link[] = [
-    { label: "My Portfolio", url: "https://myportfolio.com" },
-    { label: "GitHub", url: "https://github.com/myprofile" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/myprofile" },
-    { label: "Twitter", url: "https://twitter.com/myprofile" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/phuazaiwei/" },
+    { label: "GitHub", url: "https://github.com/yoonasea" },
+    { label: "Bus Timing App", url: "https://transport-887be.web.app/" },
+    { label: "Drawing App", url: "https://transport-887be.web.app/paint" },
+    { label: "Weather App >wip<", url: "" },
+    { label: "Task Management App >wip<", url: "" },
+    { label: "3D Printing", url: "https://www.instagram.com/phuazaiwei/" },
+    { label: "Chrome Extension", url: "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk" },
   ];
 
   return (
