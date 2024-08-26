@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container, Typography, Stack } from '@mui/material';
-import LinkItem from './LinkItem';
+import React from "react";
+import { Container, Typography, Stack } from "@mui/material";
+import LinkItem from "./LinkItem";
 
 interface Link {
   label: string;
@@ -9,14 +9,14 @@ interface Link {
 
 const LinkTree: React.FC = () => {
   const links: Link[] = [
-    { label: 'My Portfolio', url: 'https://myportfolio.com' },
-    { label: 'GitHub', url: 'https://github.com/myprofile' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/myprofile' },
-    { label: 'Twitter', url: 'https://twitter.com/myprofile' },
+    { label: "My Portfolio", url: "https://myportfolio.com" },
+    { label: "GitHub", url: "https://github.com/myprofile" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/myprofile" },
+    { label: "Twitter", url: "https://twitter.com/myprofile" },
   ];
 
   return (
-    <Container sx={{ textAlign: 'center', marginTop: 4 }}>
+    <Container sx={{ textAlign: "center", marginTop: 4 }}>
       <Typography variant="h4" gutterBottom>
         My Linktree
       </Typography>

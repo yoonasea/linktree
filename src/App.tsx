@@ -1,5 +1,5 @@
-import React from 'react';
-import LinkTree from './components/LinkTree';
+import React from "react";
+import LinkTree from "./components/LinkTree";
 
 const App: React.FC = () => {
   return (
@@ -7,6 +7,6 @@ const App: React.FC = () => {
       <LinkTree />
     </div>
   );
-}
+};
 
 export default App;
