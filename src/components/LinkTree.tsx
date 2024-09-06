@@ -11,9 +11,9 @@ const LinkTree: React.FC = () => {
   const links: Link[] = [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/phuazaiwei/" },
     { label: "GitHub", url: "https://github.com/yoonasea" },
-    { label: "Weather App", url: "https://transport-887be.web.app/weather" },
-    { label: "Drawing App", url: "https://transport-887be.web.app/paint" },
-    { label: "Bus Timing App", url: "https://transport-887be.web.app/" },
+    { label: "Weather App", url: "https://transport-887be.firebaseapp.com/weather" },
+    { label: "Drawing App", url: "https://transport-887be.firebaseapp.com/paint" },
+    { label: "Bus Timing App", url: "https://transport-887be.firebaseapp.com/" },
     { label: "3D Printing", url: "https://www.instagram.com/phuazaiwei/" },
     { label: "Chrome Extension", url: "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk" },
   ];
