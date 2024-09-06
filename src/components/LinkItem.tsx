@@ -4,10 +4,11 @@ import { Button } from "@mui/material";
 interface LinkItemProps {
   label: string;
   url: string;
-  icon: React.ReactNode; // Accept icon as a prop
+  icon: React.ReactNode;
+  className?: string;
 }
 
-const LinkItem: React.FC<LinkItemProps> = ({ label, url, icon }) => {
+const LinkItem: React.FC<LinkItemProps> = ({ label, url, icon, className }) => {
   return (
     <Button
       variant="contained"
@@ -15,6 +16,7 @@ const LinkItem: React.FC<LinkItemProps> = ({ label, url, icon }) => {
       target="_blank"
       startIcon={icon}
       sx={{ width: "100%", padding: 2 }}
+      className={className}
     >
       {label}
     </Button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Typography, Stack } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -12,7 +12,7 @@ import LinkItem from "./LinkItem";
 interface Link {
   label: string;
   url: string;
-  icon: React.ReactNode; // Add icon property
+  icon: React.ReactNode;
 }
 
 const LinkTree: React.FC = () => {
@@ -26,6 +26,14 @@ const LinkTree: React.FC = () => {
     { label: "Chrome Extension", url: "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk", icon: <ExtensionIcon /> },
   ];
 
+  useEffect(() => {
+    // Add animation delay to each element
+    const elements = document.querySelectorAll('.fadeIn');
+    elements.forEach((element, index) => {
+      (element as HTMLElement).style.animationDelay = `${index * 0.5}s`;
+    });
+  }, []);
+
   return (
     <Container sx={{ textAlign: "center", marginTop: 4 }}>
       <Typography variant="h4" gutterBottom>
@@ -33,7 +41,13 @@ const LinkTree: React.FC = () => {
       </Typography>
       <Stack spacing={2}>
         {links.map((link, index) => (
-          <LinkItem key={index} label={link.label} url={link.url} icon={link.icon} />
+          <LinkItem
+            key={index}
+            label={link.label}
+            url={link.url}
+            icon={link.icon}
+            className="fadeIn"
+          />
         ))}
       </Stack>
     </Container>
