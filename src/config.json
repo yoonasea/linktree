@@ -6,6 +6,7 @@
   "projects": [
     {
       "id": "nekotag",
+      "images": ["/images/nekotag_1.png", "/images/nekotag_2.png"],
       "visitUrl": "https://neko-tag.web.app",
       "githubUrl": null
     },

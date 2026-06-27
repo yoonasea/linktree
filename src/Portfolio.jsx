@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu, X, Code2, ArrowRight, ChevronDown, ChevronUp,
+  Menu, X, Code2, ArrowRight, ChevronDown, ChevronUp, ChevronLeft, ChevronRight,
   Sparkles, Layers, Zap, ExternalLink, Github,
   MapPin, Mail, Linkedin, Heart, ArrowUpRight,
 } from "lucide-react";
@@ -292,20 +292,61 @@ function Skills() {
 
 function ProjectCard({ project }) {
   const [expanded, setExpanded] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
   const s = PROJECT_STYLES[project.accent];
   const visible = expanded ? project.bullets : project.bullets.slice(0, 3);
   const links = config.projects.find(p => p.id === project.id) || {};
+  const images = links.images || [];
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIdx(i => (i + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length, activeIdx]);
 
   return (
     <motion.article variants={cardIn} className="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1">
       {/* Image slot */}
-      <div className={`relative h-48 bg-gradient-to-br ${s.img} overflow-hidden flex items-center justify-center`}>
-        <div aria-hidden className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle, #cbd5e1 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
-        <div className={`relative z-10 w-20 h-20 rounded-2xl ring-2 ${s.emoji} flex items-center justify-center text-4xl shadow-sm`}>{project.emoji}</div>
-        <div className="absolute top-4 right-4">
-          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${s.type}`}>{project.type}</span>
+      {images.length > 0 ? (
+        <div className={`relative h-48 bg-gradient-to-br ${s.img} overflow-hidden`}>
+          <AnimatePresence mode="wait">
+            <motion.img key={activeIdx} src={images[activeIdx]} alt={`${project.title} screenshot ${activeIdx + 1}`}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              transition={{ duration: 0.35 }} className="w-full h-full object-cover" />
+          </AnimatePresence>
+          <div className="absolute top-4 right-4">
+            <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${s.type}`}>{project.type}</span>
+          </div>
+          {images.length > 1 && (
+            <>
+              <button onClick={() => setActiveIdx(i => (i - 1 + images.length) % images.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-sm transition-all opacity-0 group-hover:opacity-100">
+                <ChevronLeft size={16} className="text-slate-700" />
+              </button>
+              <button onClick={() => setActiveIdx(i => (i + 1) % images.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-sm transition-all opacity-0 group-hover:opacity-100">
+                <ChevronRight size={16} className="text-slate-700" />
+              </button>
+              <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1.5 pb-3">
+                {images.map((_, i) => (
+                  <button key={i} onClick={() => setActiveIdx(i)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${i === activeIdx ? "bg-white scale-110 shadow-sm" : "bg-white/50 hover:bg-white/70"}`} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
-      </div>
+      ) : (
+        <div className={`relative h-48 bg-gradient-to-br ${s.img} overflow-hidden flex items-center justify-center`}>
+          <div aria-hidden className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle, #cbd5e1 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+          <div className={`relative z-10 w-20 h-20 rounded-2xl ring-2 ${s.emoji} flex items-center justify-center text-4xl shadow-sm`}>{project.emoji}</div>
+          <div className="absolute top-4 right-4">
+            <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${s.type}`}>{project.type}</span>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col flex-1 p-6">
         <h3 className="text-lg font-bold text-slate-900 mb-1 tracking-tight">{project.title}</h3>
