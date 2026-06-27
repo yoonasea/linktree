@@ -8,6 +8,7 @@ import {
   Sparkles, Layers, Zap, ExternalLink, Github,
   MapPin, Mail, Linkedin, Heart, ArrowUpRight,
 } from "lucide-react";
+import config from './config.json';
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -63,8 +64,6 @@ const PROJECTS = [
       "GitHub Actions CI/CD pipeline deploying to Firebase Hosting on every merge.",
     ],
     badges: ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions"],
-    visitUrl: "https://nekotag.example.com",
-    githubUrl: "https://github.com/yourusername/nekotag",
   },
   {
     id: "bus", emoji: "\uD83D\uDE8C", type: "Mobile App",
@@ -77,8 +76,6 @@ const PROJECTS = [
       "Clean state management with separation across data, domain, and UI layers.",
     ],
     badges: ["Flutter", "Dart", "Android", "OpenStreetMap", "AWS Lambda", "LTA DataMall API"],
-    visitUrl: null,
-    githubUrl: "https://github.com/yourusername/bus-timing",
   },
   {
     id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App",
@@ -91,8 +88,6 @@ const PROJECTS = [
       "Offline-first design with local caching for network-independent availability.",
     ],
     badges: ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
-    visitUrl: null,
-    githubUrl: "https://github.com/yourusername/password-manager",
   },
 ];
 
@@ -103,9 +98,9 @@ const PROJECT_STYLES = {
 };
 
 const CONTACT_LINKS = [
-  { label: "GitHub",   icon: Github,   href: "https://github.com/yourusername",        desc: "Source code & projects",    hover: "hover:border-slate-400 hover:bg-slate-50",   iconCls: "text-slate-700" },
-  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/yourprofile",    desc: "Professional network",      hover: "hover:border-blue-300 hover:bg-blue-50",     iconCls: "text-blue-600"  },
-  { label: "Email",    icon: Mail,     href: "mailto:hello@yourdomain.com",            desc: "hello@yourdomain.com",      hover: "hover:border-indigo-300 hover:bg-indigo-50", iconCls: "text-indigo-600"},
+  { label: "GitHub",   icon: Github,   href: config.github,     desc: "Source code & projects",    hover: "hover:border-slate-400 hover:bg-slate-50",   iconCls: "text-slate-700" },
+  { label: "LinkedIn", icon: Linkedin, href: config.linkedin,   desc: "Professional network",      hover: "hover:border-blue-300 hover:bg-blue-50",     iconCls: "text-blue-600"  },
+  { label: "Email",    icon: Mail,     href: `mailto:${config.email}`, desc: config.email, hover: "hover:border-indigo-300 hover:bg-indigo-50", iconCls: "text-indigo-600"},
 ];
 
 // ─── ANIMATION VARIANTS ──────────────────────────────────────────────────────
@@ -215,12 +210,11 @@ function Hero() {
         {/* Headline */}
         <motion.h1 custom={0} initial="hidden" animate="visible" variants={fadeUp}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
-          Frontend &{" "}
+          Full-Stack Engineer with{" "}
           <span style={{ background: "linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#2563eb 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Mobile Engineer
+            Mobile Experience
           </span>
-          <br className="hidden sm:block" />
-          <span className="text-slate-700"> with Full-Stack Execution.</span>
+          <span className="text-slate-700">.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -300,6 +294,7 @@ function ProjectCard({ project }) {
   const [expanded, setExpanded] = useState(false);
   const s = PROJECT_STYLES[project.accent];
   const visible = expanded ? project.bullets : project.bullets.slice(0, 3);
+  const links = config.projects.find(p => p.id === project.id) || {};
 
   return (
     <motion.article variants={cardIn} className="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1">
@@ -344,14 +339,14 @@ function ProjectCard({ project }) {
 
         {/* Actions */}
         <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
-          {project.visitUrl && (
-            <a href={project.visitUrl} target="_blank" rel="noopener noreferrer"
+          {links.visitUrl && (
+            <a href={links.visitUrl} target="_blank" rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-xl text-white transition-all duration-200 shadow-sm ${s.visit}`}>
               <ExternalLink size={14} /> Visit Live Prototype
             </a>
           )}
-          {project.githubUrl && (
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+          {links.githubUrl && (
+            <a href={links.githubUrl} target="_blank" rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-xl text-white transition-all duration-200 ${s.gh}`}>
               <Github size={14} /> GitHub
             </a>
@@ -384,7 +379,7 @@ function Projects() {
 function Contact() {
   const [copied, setCopied] = useState(false);
   const copyEmail = async () => {
-    await navigator.clipboard.writeText("hello@yourdomain.com");
+    await navigator.clipboard.writeText(config.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -404,12 +399,12 @@ function Contact() {
             <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <MapPin size={14} className="text-slate-400" />
-              <span className="text-sm font-medium text-slate-600">Based in Singapore</span>
+              <span className="text-sm font-medium text-slate-600">Based in {config.location}</span>
             </div>
             <div className="mt-6">
               <button onClick={copyEmail} className="group flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 transition-colors">
                 <Mail size={14} className="text-slate-400 group-hover:text-indigo-500 transition-colors" />
-                <span className="font-mono text-sm">hello@yourdomain.com</span>
+                <span className="font-mono text-sm">{config.email}</span>
                 <span className={`text-xs px-2 py-0.5 rounded-md transition-all duration-200 ${copied ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-slate-500 group-hover:bg-slate-200"}`}>
                   {copied ? "Copied!" : "Copy"}
                 </span>
@@ -445,7 +440,7 @@ function Contact() {
             <span className="text-sm font-medium text-slate-700">Portfolio</span>
           </div>
           <p className="text-xs text-slate-400 flex items-center gap-1">Built with React, Vite & Framer Motion <Heart size={11} className="text-indigo-400 fill-indigo-400 ml-1" /></p>
-          <p className="text-xs text-slate-400">\u00A9 {new Date().getFullYear()} — All rights reserved.</p>
+          <p className="text-xs text-slate-400">© {new Date().getFullYear()} — All rights reserved.</p>
         </motion.div>
       </div>
     </section>

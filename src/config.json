@@ -1,0 +1,23 @@
+{
+  "email": "phuazaiwei@gmail.com",
+  "github": "https://github.com/yoonasea",
+  "linkedin": "https://linkedin.com/in/phuazaiwei/",
+  "location": "Singapore",
+  "projects": [
+    {
+      "id": "nekotag",
+      "visitUrl": "https://neko-tag.web.app",
+      "githubUrl": null
+    },
+    {
+      "id": "bus",
+      "visitUrl": null,
+      "githubUrl": null
+    },
+    {
+      "id": "pw",
+      "visitUrl": null,
+      "githubUrl": null
+    }
+  ]
+}
