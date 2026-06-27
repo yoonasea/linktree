@@ -1,8 +1,8 @@
 // Portfolio.jsx — single-file React portfolio
 // Dependencies: framer-motion, lucide-react, tailwindcss
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   Menu, X, Code2, ArrowRight, ChevronDown, ChevronUp, ChevronLeft, ChevronRight,
   Sparkles, Layers, Zap, ExternalLink, Github,
@@ -80,6 +80,27 @@ const fadeUp = {
 };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
 const cardIn  = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } } };
+
+// ─── REVEAL WRAPPER ──────────────────────────────────────────────────────────
+
+function Reveal({ children, dir = "up" }) {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
+  const xOffset = dir === "left" ? 60 : dir === "right" ? -60 : 0
+  const yOffset = dir === "up" ? 50 : 0
+  const x = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [xOffset, 0, 0, xOffset])
+  const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [yOffset, 0, 0, yOffset])
+
+  return (
+    <motion.div ref={ref} style={{ opacity, x, y }}>
+      {children}
+    </motion.div>
+  )
+}
 
 // ─── NAVBAR ──────────────────────────────────────────────────────────────────
 
@@ -228,13 +249,13 @@ function Skills() {
   return (
     <section id="skills" className="py-24 sm:py-32 px-4 sm:px-6 bg-white">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} className="mb-14">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-3">Technical Stack</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">Skills & Technologies</h2>
           <p className="text-slate-500 text-base sm:text-lg max-w-xl leading-relaxed">Seven years of accumulated tooling across frontend, mobile, cloud, and AI—applied pragmatically to ship.</p>
         </motion.div>
 
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ margin: "-80px" }} className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
           {SKILLS.map((cat) => {
             const s = SKILL_STYLES[cat.accent];
             return (
@@ -373,12 +394,12 @@ function Projects() {
   return (
     <section id="projects" className="py-24 sm:py-32 px-4 sm:px-6 bg-slate-50">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }} className="mb-14">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }} className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-3">Selected Work</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">Projects Showcase</h2>
           <p className="text-slate-500 text-base sm:text-lg max-w-xl leading-relaxed">A cross-section of web, mobile, and full-stack projects built to explore real-world architecture and deliver working software.</p>
         </motion.div>
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ margin: "-60px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((p) => <ProjectCard key={p.id} project={p} />)}
         </motion.div>
       </div>
@@ -401,7 +422,7 @@ function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left */}
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
             <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-3">Get In Touch</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-5">
               Let's build something{" "}
@@ -428,7 +449,7 @@ function Contact() {
           <div className="flex flex-col gap-3">
             {CONTACT_LINKS.map(({ label, icon: Icon, href, desc, hover, iconCls }, i) => (
               <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                custom={i} initial="hidden" whileInView="visible"
                 variants={{ hidden: { opacity: 0, y: 24 }, visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] } }) }}
                 className={`group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 ${hover}`}>
                 <div className={`w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center flex-shrink-0 ${iconCls}`}>
@@ -445,7 +466,7 @@ function Contact() {
         </div>
 
         {/* Footer */}
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.5 }}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
           className="mt-20 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center"><Code2 size={12} className="text-white" /></div>
@@ -467,9 +488,9 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Reveal dir="left"><Skills /></Reveal>
+        <Reveal dir="right"><Projects /></Reveal>
+        <Reveal dir="left"><Contact /></Reveal>
       </main>
     </div>
   );
