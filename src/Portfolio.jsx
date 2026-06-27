@@ -51,60 +51,11 @@ const SKILL_STYLES = {
 };
 
 const PROJECTS = [
-  {
-    id: "nekotag", emoji: "\uD83D\uDECD\uFE0F", type: "Full-Stack Web",
-    title: "NekoTag", subtitle: "AI-Enabled E-Commerce Platform",
-    accent: "indigo",
-    bullets: [
-      "Serverless Stack: Vite/React frontend deployed on Firebase, with a Node.js backend on AWS Lambda and Firestore database.",
-      "Integrations: Secure user login via Google OAuth and transactional payment processing via Stripe Sandbox.",
-      "AI Admin Agent: Administrative chatbot leveraging Gemini API and Model Context Protocol (MCP) for context-aware database workflows.",
-      "Automated DevOps: GitHub Actions pipeline automating linting, unit testing, and multi-cloud deployment on code push.",
-    ],
-    badges: ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions", "Google OAuth"],
-  },
-  {
-    id: "chrome-ext", emoji: "\uD83C\uDFAE", type: "Chrome Extension",
-    title: "New Tab League of Legends", subtitle: "Chrome Extension",
-    accent: "amber",
-    bullets: [
-      "Displays randomized high-quality League of Legends wallpapers with the current time on each new tab.",
-      "Published on the Chrome Web Store with 600+ active users.",
-    ],
-    badges: ["Chrome Extension", "JavaScript", "Chrome Web Store"],
-  },
-  {
-    id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App",
-    title: "Password Manager & 2FA Authenticator", subtitle: "Android Flutter App",
-    accent: "emerald",
-    bullets: [
-      "Encrypted passwords stored in AWS DynamoDB with field-level encryption.",
-      "TOTP-based 2FA code generation with secrets also stored in DynamoDB.",
-      "Both passwords and 2FA codes cached locally for offline access.",
-    ],
-    badges: ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
-  },
-  {
-    id: "bus", emoji: "\uD83D\uDE8C", type: "Mobile App",
-    title: "Bus Service Timing", subtitle: "Android Flutter Transit App",
-    accent: "blue",
-    bullets: [
-      "Native Android app providing real-time Singapore bus arrival timings.",
-      "OpenStreetMap integration for interactive route visualization and stop discovery.",
-      "AWS Lambda backend proxying and normalizing LTA DataMall API responses.",
-      "Clean state management with separation across data, domain, and UI layers.",
-    ],
-    badges: ["Flutter", "Dart", "Android", "OpenStreetMap", "AWS Lambda", "LTA DataMall API"],
-  },
-  {
-    id: "delitrade", emoji: "\uD83C\uDFEE", type: "Landing Page",
-    title: "Delitrade", subtitle: "Fengshui Business Landing Page",
-    accent: "orange",
-    bullets: [
-      "Designed and deployed a responsive landing page for a fengshui consultant's business on Firebase Hosting.",
-    ],
-    badges: ["Firebase", "HTML/CSS", "JavaScript", "Responsive Design"],
-  },
+  { id: "nekotag", emoji: "\uD83D\uDECD\uFE0F", type: "Full-Stack Web", accent: "indigo" },
+  { id: "chrome-ext", emoji: "\uD83C\uDFAE", type: "Chrome Extension", accent: "amber" },
+  { id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App", accent: "emerald" },
+  { id: "bus", emoji: "\uD83D\uDE8C", type: "Mobile App", accent: "blue" },
+  { id: "delitrade", emoji: "\uD83C\uDFEE", type: "Landing Page", accent: "orange" },
 ];
 
 const PROJECT_STYLES = {
@@ -312,9 +263,11 @@ function ProjectCard({ project }) {
   const [expanded, setExpanded] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   const s = PROJECT_STYLES[project.accent];
-  const visible = expanded ? project.bullets : project.bullets.slice(0, 3);
   const links = config.projects.find(p => p.id === project.id) || {};
   const images = links.images || [];
+  const bullets = links.bullets || [];
+  const badges = links.badges || [];
+  const visible = expanded ? bullets : bullets.slice(0, 3);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -330,7 +283,7 @@ function ProjectCard({ project }) {
       {images.length > 0 ? (
         <div className={`relative h-48 bg-gradient-to-br ${s.img} overflow-hidden`}>
           <AnimatePresence mode="wait">
-            <motion.img key={activeIdx} src={images[activeIdx]} alt={`${project.title} screenshot ${activeIdx + 1}`}
+            <motion.img key={activeIdx} src={images[activeIdx]} alt={`${links.title || project.title} screenshot ${activeIdx + 1}`}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }} className="w-full h-full object-cover" />
           </AnimatePresence>
@@ -367,8 +320,8 @@ function ProjectCard({ project }) {
       )}
 
       <div className="flex flex-col flex-1 p-6">
-        <h3 className="text-lg font-bold text-slate-900 mb-1 tracking-tight">{project.title}</h3>
-        <p className="text-sm text-slate-500 mb-4 font-medium">{project.subtitle}</p>
+        <h3 className="text-lg font-bold text-slate-900 mb-1 tracking-tight">{links.title || project.title}</h3>
+        <p className="text-sm text-slate-500 mb-4 font-medium">{links.subtitle || project.subtitle}</p>
 
         {/* Bullets */}
         <div className="flex-1 mb-5">
@@ -382,16 +335,16 @@ function ProjectCard({ project }) {
               ))}
             </AnimatePresence>
           </ul>
-          {project.bullets.length > 3 && (
+          {bullets.length > 3 && (
             <button onClick={() => setExpanded(!expanded)} className="mt-3 flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors">
-              {expanded ? <><ChevronUp size={14} /> Show less</> : <><ChevronDown size={14} /> +{project.bullets.length - 3} more</>}
+              {expanded ? <><ChevronUp size={14} /> Show less</> : <><ChevronDown size={14} /> +{bullets.length - 3} more</>}
             </button>
           )}
         </div>
 
         {/* Badges */}
         <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.badges.map((b) => (
+          {badges.map((b) => (
             <span key={b} className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium border ${s.badge}`} style={{ fontFamily: "JetBrains Mono, Fira Code, monospace", fontSize: "11px" }}>{b}</span>
           ))}
         </div>
