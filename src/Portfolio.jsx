@@ -65,10 +65,11 @@ const PROJECTS = [
   },
   {
     id: "chrome-ext", emoji: "\uD83C\uDFAE", type: "Chrome Extension",
-    title: "New Tab Video Game Wallpapers", subtitle: "Published on Chrome Web Store — 600+ Active Users",
+    title: "New Tab League of Legends", subtitle: "Chrome Extension",
     accent: "amber",
     bullets: [
-      "Developed and launched a Chrome extension that displays randomized high-quality video game wallpapers with the current time on each new tab.",
+      "Displays randomized high-quality League of Legends wallpapers with the current time on each new tab.",
+      "Published on the Chrome Web Store with 600+ active users.",
     ],
     badges: ["Chrome Extension", "JavaScript", "Chrome Web Store"],
   },
