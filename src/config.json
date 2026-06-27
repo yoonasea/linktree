@@ -8,7 +8,10 @@
       "id": "nekotag",
       "title": "NekoTag",
       "subtitle": "AI-Enabled E-Commerce Platform",
-      "images": ["/images/nekotag_1.png", "/images/nekotag_2.png"],
+      "images": [
+        "/images/nekotag_1.png",
+        "/images/nekotag_2.png"
+      ],
       "visitUrl": "https://neko-tag.web.app",
       "githubUrl": null,
       "bullets": [
@@ -17,20 +20,38 @@
         "AI Admin Agent: Administrative chatbot leveraging Gemini API and Model Context Protocol (MCP) for context-aware database workflows.",
         "Automated DevOps: GitHub Actions pipeline automating linting, unit testing, and multi-cloud deployment on code push."
       ],
-      "badges": ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions", "Google OAuth"]
+      "badges": [
+        "React",
+        "Vite",
+        "Firebase",
+        "Firestore",
+        "AWS Lambda",
+        "Stripe",
+        "Gemini API",
+        "MCP",
+        "GitHub Actions",
+        "Google OAuth"
+      ]
     },
     {
       "id": "chrome-ext",
       "title": "New Tab League of Legends",
       "subtitle": "Chrome Extension",
-      "images": ["/images/lol_1.png", "/images/lol_2.png"],
+      "images": [
+        "/images/lol_1.png",
+        "/images/lol_2.png"
+      ],
       "visitUrl": "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk",
       "githubUrl": "https://github.com/yoonasea/new-tab-wallpaper",
       "bullets": [
         "Displays randomized high-quality League of Legends wallpapers with the current time on each new tab.",
         "Published on the Chrome Web Store with 600+ active users."
       ],
-      "badges": ["Chrome Extension", "JavaScript", "Chrome Web Store"]
+      "badges": [
+        "Chrome Extension",
+        "JavaScript",
+        "Chrome Web Store"
+      ]
     },
     {
       "id": "pw",
@@ -43,7 +64,15 @@
         "TOTP-based 2FA code generation with secrets also stored in DynamoDB.",
         "Both passwords and 2FA codes cached locally for offline access."
       ],
-      "badges": ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"]
+      "badges": [
+        "Flutter",
+        "Dart",
+        "Android",
+        "AWS DynamoDB",
+        "Encryption",
+        "TOTP",
+        "Biometrics"
+      ]
     },
     {
       "id": "bus",
@@ -52,21 +81,37 @@
       "visitUrl": null,
       "githubUrl": null,
       "bullets": [
-        "Built a personal transit app that fetches real-time bus timings and visualizes routes via OpenStreetMap, using AWS Lambda to process LTA DataMall API responses."
+        "Fetches real-time bus timings and visualizes routes via OpenStreetMap",
+        "Data from LTA DataMall API"
       ],
-      "badges": ["Flutter", "Dart", "Android", "OpenStreetMap", "AWS Lambda", "LTA DataMall API"]
+      "badges": [
+        "Flutter",
+        "Dart",
+        "Android",
+        "OpenStreetMap",
+        "AWS Lambda",
+        "LTA DataMall API"
+      ]
     },
     {
       "id": "delitrade",
-      "title": "Delitrade",
+      "title": "De Li Trade",
       "subtitle": "Fengshui Business Landing Page",
-      "images": ["/images/delitrade_1.png", "/images/delitrade_2.png"],
+      "images": [
+        "/images/delitrade_1.png",
+        "/images/delitrade_2.png"
+      ],
       "visitUrl": "https://deli-trade.web.app/",
       "githubUrl": "https://github.com/yoonasea/delitrade-landing-page",
       "bullets": [
         "Designed and deployed a responsive landing page for a fengshui consultant's business on Firebase Hosting."
       ],
-      "badges": ["Firebase", "HTML/CSS", "JavaScript", "Responsive Design"]
+      "badges": [
+        "Firebase",
+        "HTML/CSS",
+        "JavaScript",
+        "Responsive Design"
+      ]
     }
   ]
 }
