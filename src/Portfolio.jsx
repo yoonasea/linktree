@@ -53,13 +53,13 @@ const SKILL_STYLES = {
 const PROJECTS = [
   {
     id: "nekotag", emoji: "\uD83D\uDECD\uFE0F", type: "Full-Stack Web",
-    title: "NekoTag", subtitle: "AI-Enabled E-Commerce Platform & CI/CD Pipeline",
+    title: "NekoTag", subtitle: "AI-Enabled E-Commerce Platform",
     accent: "indigo",
     bullets: [
-      "Developed a full-stack e-commerce prototype using a Vite/React.js frontend deployed on Firebase Hosting, with a serverless Node.js backend running on AWS Lambda and data managed via Firestore.",
-      "Implemented secure user authentication via Google OAuth and integrated a complete payment processing pipeline using Stripe (Sandbox mode).",
-      "Built an internal administrative AI chatbot using the Gemini API and Model Context Protocol (MCP), granting the LLM safe, context-aware access to database records for automated admin workflows.",
-      "Built fully automated CI/CD pipelines via GitHub Actions to handle linting, unit testing, building, and deployments for both frontend assets and backend functions on code push.",
+      "Serverless Stack: Vite/React frontend deployed on Firebase, with a Node.js backend on AWS Lambda and Firestore database.",
+      "Integrations: Secure user login via Google OAuth and transactional payment processing via Stripe Sandbox.",
+      "AI Admin Agent: Administrative chatbot leveraging Gemini API and Model Context Protocol (MCP) for context-aware database workflows.",
+      "Automated DevOps: GitHub Actions pipeline automating linting, unit testing, and multi-cloud deployment on code push.",
     ],
     badges: ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions", "Google OAuth"],
   },
@@ -400,8 +400,8 @@ function ProjectCard({ project }) {
         <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
           {links.visitUrl && (
             <a href={links.visitUrl} target="_blank" rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-xl text-white transition-all duration-200 shadow-sm ${s.visit}`}>
-              <ExternalLink size={14} /> Visit Live Prototype
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-xl text-white transition-all duration-200 shadow-sm bg-blue-600 hover:bg-blue-700 shadow-blue-200/60">
+              <ExternalLink size={14} /> Visit
             </a>
           )}
           {links.githubUrl && (
