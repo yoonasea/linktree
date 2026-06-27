@@ -58,6 +58,7 @@
       "id": "pw",
       "title": "Password Manager & 2FA Authenticator",
       "subtitle": "Android Flutter App",
+      "images": ["/images/pwd_1.jpg", "/images/pwd_2.jpg"],
       "visitUrl": null,
       "githubUrl": null,
       "bullets": [
@@ -79,6 +80,7 @@
       "id": "bus",
       "title": "Bus Service Timing",
       "subtitle": "Android Flutter App",
+      "images": ["/images/bus_1.jpg", "/images/bus_2.jpg"],
       "visitUrl": null,
       "githubUrl": null,
       "bullets": [
