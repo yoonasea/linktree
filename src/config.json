@@ -15,17 +15,18 @@
       "visitUrl": "https://neko-tag.web.app",
       "githubUrl": null,
       "bullets": [
-        "Serverless Stack: Vite/React frontend deployed on Firebase, with a Node.js backend on AWS Lambda and Firestore database.",
+        "Serverless Stack: React frontend deployed on Firebase, with a Node.js backend on AWS Lambda and Firestore database.",
         "Integrations: Secure user login via Google OAuth and transactional payment processing via Stripe Sandbox.",
         "AI Admin Agent: Administrative chatbot leveraging Gemini API and Model Context Protocol (MCP) for context-aware database workflows.",
         "Automated DevOps: GitHub Actions pipeline automating linting, unit testing, and multi-cloud deployment on code push."
       ],
       "badges": [
         "React",
-        "Vite",
+        "Typescript",
         "Firebase",
         "Firestore",
         "AWS Lambda",
+        "Vitest",
         "Stripe",
         "Gemini API",
         "MCP",
@@ -107,10 +108,8 @@
         "Designed and deployed a responsive landing page for a fengshui consultant's business on Firebase Hosting."
       ],
       "badges": [
-        "Firebase",
-        "HTML/CSS",
-        "JavaScript",
-        "Responsive Design"
+        "React",
+        "Firebase"
       ]
     }
   ]
