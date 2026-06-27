@@ -75,13 +75,12 @@ const PROJECTS = [
   },
   {
     id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App",
-    title: "Password Manager & 2FA Authenticator", subtitle: "Android Flutter Security Utility",
+    title: "Password Manager & 2FA Authenticator", subtitle: "Android Flutter App",
     accent: "emerald",
     bullets: [
-      "Personal security utility combining encrypted password storage and TOTP 2FA.",
-      "Credentials stored in AWS DynamoDB with field-level encryption.",
-      "Minimalist vault UI with biometric unlock on compatible Android devices.",
-      "Offline-first design with local caching for network-independent availability.",
+      "Encrypted passwords stored in AWS DynamoDB with field-level encryption.",
+      "TOTP-based 2FA code generation with secrets also stored in DynamoDB.",
+      "Both passwords and 2FA codes cached locally for offline access.",
     ],
     badges: ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
   },
