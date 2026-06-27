@@ -11,14 +11,26 @@
       "githubUrl": null
     },
     {
-      "id": "bus",
-      "visitUrl": null,
-      "githubUrl": null
+      "id": "chrome-ext",
+      "images": ["/images/lol_1.png", "/images/lol_2.png"],
+      "visitUrl": "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk",
+      "githubUrl": "https://github.com/yoonasea/new-tab-wallpaper"
     },
     {
       "id": "pw",
       "visitUrl": null,
       "githubUrl": null
+    },
+    {
+      "id": "bus",
+      "visitUrl": null,
+      "githubUrl": null
+    },
+    {
+      "id": "delitrade",
+      "images": ["/images/delitrade_1.png", "/images/delitrade_2.png"],
+      "visitUrl": "https://deli-trade.web.app/",
+      "githubUrl": "https://github.com/yoonasea/delitrade-landing-page"
     }
   ]
 }

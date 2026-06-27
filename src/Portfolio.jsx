@@ -53,17 +53,36 @@ const SKILL_STYLES = {
 const PROJECTS = [
   {
     id: "nekotag", emoji: "\uD83D\uDECD\uFE0F", type: "Full-Stack Web",
-    title: "NekoTag", subtitle: "AI-Enabled E-Commerce Platform",
+    title: "NekoTag", subtitle: "AI-Enabled E-Commerce Platform & CI/CD Pipeline",
     accent: "indigo",
     bullets: [
-      "Vite + React storefront with responsive product catalog, cart, and checkout flows.",
-      "Firebase Firestore for real-time inventory and order management.",
-      "AWS Lambda serverless backend handling order processing and webhooks.",
-      "Stripe Sandbox integration with webhook verification for end-to-end payment simulation.",
-      "Gemini API + MCP powering an Admin chatbot for inventory Q&A.",
-      "GitHub Actions CI/CD pipeline deploying to Firebase Hosting on every merge.",
+      "Developed a full-stack e-commerce prototype using a Vite/React.js frontend deployed on Firebase Hosting, with a serverless Node.js backend running on AWS Lambda and data managed via Firestore.",
+      "Implemented secure user authentication via Google OAuth and integrated a complete payment processing pipeline using Stripe (Sandbox mode).",
+      "Built an internal administrative AI chatbot using the Gemini API and Model Context Protocol (MCP), granting the LLM safe, context-aware access to database records for automated admin workflows.",
+      "Built fully automated CI/CD pipelines via GitHub Actions to handle linting, unit testing, building, and deployments for both frontend assets and backend functions on code push.",
     ],
-    badges: ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions"],
+    badges: ["React", "Vite", "Firebase", "Firestore", "AWS Lambda", "Stripe", "Gemini API", "MCP", "GitHub Actions", "Google OAuth"],
+  },
+  {
+    id: "chrome-ext", emoji: "\uD83C\uDFAE", type: "Chrome Extension",
+    title: "New Tab Video Game Wallpapers", subtitle: "Published on Chrome Web Store — 600+ Active Users",
+    accent: "amber",
+    bullets: [
+      "Developed and launched a Chrome extension that displays randomized high-quality video game wallpapers with the current time on each new tab.",
+    ],
+    badges: ["Chrome Extension", "JavaScript", "Chrome Web Store"],
+  },
+  {
+    id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App",
+    title: "Password Manager & 2FA Authenticator", subtitle: "Android Flutter Security Utility",
+    accent: "emerald",
+    bullets: [
+      "Personal security utility combining encrypted password storage and TOTP 2FA.",
+      "Credentials stored in AWS DynamoDB with field-level encryption.",
+      "Minimalist vault UI with biometric unlock on compatible Android devices.",
+      "Offline-first design with local caching for network-independent availability.",
+    ],
+    badges: ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
   },
   {
     id: "bus", emoji: "\uD83D\uDE8C", type: "Mobile App",
@@ -78,16 +97,13 @@ const PROJECTS = [
     badges: ["Flutter", "Dart", "Android", "OpenStreetMap", "AWS Lambda", "LTA DataMall API"],
   },
   {
-    id: "pw", emoji: "\uD83D\uDD10", type: "Mobile App",
-    title: "Password Manager & 2FA", subtitle: "Android Flutter Security Utility",
-    accent: "emerald",
+    id: "delitrade", emoji: "\uD83C\uDFEE", type: "Landing Page",
+    title: "Delitrade", subtitle: "Fengshui Business Landing Page",
+    accent: "orange",
     bullets: [
-      "Personal security utility combining encrypted password storage and TOTP 2FA.",
-      "Credentials stored in AWS DynamoDB with field-level encryption.",
-      "Minimalist vault UI with biometric unlock on compatible Android devices.",
-      "Offline-first design with local caching for network-independent availability.",
+      "Designed and deployed a responsive landing page for a fengshui consultant's business on Firebase Hosting.",
     ],
-    badges: ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
+    badges: ["Firebase", "HTML/CSS", "JavaScript", "Responsive Design"],
   },
 ];
 
@@ -95,6 +111,8 @@ const PROJECT_STYLES = {
   indigo:  { img: "from-indigo-50 to-violet-50", emoji: "ring-indigo-100 bg-indigo-50", type: "bg-indigo-50 text-indigo-600 border-indigo-100", badge: "bg-indigo-50 text-indigo-700 border-indigo-100", bullet: "bg-indigo-400", visit: "bg-indigo-600 hover:bg-indigo-700 shadow-indigo-200/60", gh: "bg-slate-800 hover:bg-slate-700" },
   blue:    { img: "from-blue-50 to-sky-50",       emoji: "ring-blue-100 bg-blue-50",     type: "bg-blue-50 text-blue-600 border-blue-100",         badge: "bg-blue-50 text-blue-700 border-blue-100",         bullet: "bg-blue-400",    visit: "bg-blue-600 hover:bg-blue-700 shadow-blue-200/60",     gh: "bg-slate-800 hover:bg-slate-700" },
   emerald: { img: "from-emerald-50 to-teal-50",   emoji: "ring-emerald-100 bg-emerald-50", type: "bg-emerald-50 text-emerald-600 border-emerald-100", badge: "bg-emerald-50 text-emerald-700 border-emerald-100", bullet: "bg-emerald-400", visit: "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200/60", gh: "bg-slate-800 hover:bg-slate-700" },
+  amber:   { img: "from-amber-50 to-yellow-50",   emoji: "ring-amber-100 bg-amber-50",   type: "bg-amber-50 text-amber-600 border-amber-100",       badge: "bg-amber-50 text-amber-700 border-amber-100",       bullet: "bg-amber-400",   visit: "bg-amber-600 hover:bg-amber-700 shadow-amber-200/60",   gh: "bg-slate-800 hover:bg-slate-700" },
+  orange:  { img: "from-orange-50 to-amber-50",   emoji: "ring-orange-100 bg-orange-50", type: "bg-orange-50 text-orange-600 border-orange-100",     badge: "bg-orange-50 text-orange-700 border-orange-100",   bullet: "bg-orange-400",  visit: "bg-orange-600 hover:bg-orange-700 shadow-orange-200/60", gh: "bg-slate-800 hover:bg-slate-700" },
 };
 
 const CONTACT_LINKS = [
