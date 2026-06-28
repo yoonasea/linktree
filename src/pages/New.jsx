@@ -223,8 +223,11 @@ function SkyCanvas({ scrollY }) {
 function ProjectCard({ project, index }) {
   const [hovered, setHovered] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [expanded, setExpanded] = useState(false);
   const configProject = config.projects.find(p => p.id === project.id) || {};
   const images = configProject.images || [];
+  const bullets = configProject.bullets || [];
+  const visible = expanded ? bullets : bullets.slice(0, 3);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -313,9 +316,21 @@ function ProjectCard({ project, index }) {
       </div>
 
       <div style={{ padding: "0 16px 16px" }}>
-        <p style={{ fontSize: 13, color: "#555", lineHeight: 1.65, margin: "0 0 12px" }}>{project.desc}</p>
+        <ul style={{ margin: 0, padding: 0, listStyle: "none", marginBottom: 14 }}>
+          {visible.map((b, i) => (
+            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "#555", lineHeight: 1.65, marginBottom: 8 }}>
+              <span style={{ marginTop: 7, width: 6, height: 6, borderRadius: "50%", background: SKY, flexShrink: 0 }} />
+              {b}
+            </li>
+          ))}
+        </ul>
+        {bullets.length > 3 && (
+          <button onClick={() => setExpanded(!expanded)} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4, fontSize: 12, fontWeight: 600, color: "#999", padding: 0, marginBottom: 14 }}>
+            {expanded ? <>&#9650; Show less</> : <>&#9660; +{bullets.length - 3} more</>}
+          </button>
+        )}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 14 }}>
-          {project.tags.map(t => (
+          {(configProject.badges || project.tags).map(t => (
             <span key={t} style={{
               background: "#fff", color: "#222", border: "1.5px solid #333",
               borderRadius: 20, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: 0.2,
@@ -443,6 +458,16 @@ export default function New() {
         <SolariBoard text={h.name} label="Passenger" size={mobile ? "sm" : "lg"} />
         <div style={{ marginTop: 20 }}>
           <SolariBoard text={h.role} label="Role" size={mobile ? "sm" : "lg"} />
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", gap: mobile ? 18 : 36, marginTop: 36, flexWrap: "wrap" }}>
+          {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", config.hero.pills[0].replace(/[^0-9]/g, "")]].map(([k, v]) => (
+            <div key={k} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 10, color: "#555", letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>{k}</div>
+              <div style={{ background: BOARD_BG, border: "1px solid #333", borderRadius: 6, padding: "5px 10px", display: "inline-flex", gap: 2 }}>
+                {v.split("").map((c, i) => <SplitFlapChar key={i} target={c} delay={900 + i * 55} size={mobile ? "sm" : "lg"} />)}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
