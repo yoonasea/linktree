@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
+
 import config from '../config.json';
 
 const SKY      = "#4fa3d1";
 const MINT     = "#52c9a0";
 const CREAM    = "#f0f9f4";
 const DARK     = "#1a1a2e";
-const BOARD_BG = "#111111";
-const AMBER    = "#f5a623";
 
 function useIsMobile() {
   const [mobile, setMobile] = useState(false);
@@ -20,6 +19,8 @@ function useIsMobile() {
   return mobile;
 }
 
+const BOARD_BG = "#111111";
+const AMBER    = "#ffffff";
 const CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-:";
 
 function SplitFlapChar({ target, delay = 0, size = "lg" }) {
@@ -40,15 +41,23 @@ function SplitFlapChar({ target, delay = 0, size = "lg" }) {
   const sm = size === "sm";
   return (
     <span style={{
+      position: "relative", overflow: "hidden",
       display: "inline-flex", alignItems: "center", justifyContent: "center",
       width: sm ? "1.8ch" : "2.1ch",
-      height: sm ? "2.2rem" : "3rem",
+      height: sm ? "2rem" : "2.8rem",
       background: BOARD_BG, color: AMBER,
       fontFamily: "'Courier New', monospace", fontWeight: 700,
       fontSize: sm ? "1rem" : "1.4rem",
       borderRadius: 4, margin: "0 2px", border: "1px solid #333",
       boxShadow: "inset 0 1px 4px rgba(0,0,0,0.6)", userSelect: "none",
-    }}>{display}</span>
+    }}>
+      {display}
+      <span aria-hidden style={{
+        position: "absolute", left: 0, right: 0, top: "50%",
+        height: 2, background: "rgba(0,0,0,0.6)",
+        transform: "translateY(-50%)", pointerEvents: "none",
+      }} />
+    </span>
   );
 }
 
@@ -457,11 +466,15 @@ export default function New() {
           <SolariBoard text={h.role} label="Role" size={mobile ? "sm" : "lg"} />
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: mobile ? 18 : 36, marginTop: 36, flexWrap: "wrap" }}>
-          {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", config.experience]].map(([k, v]) => (
+          {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", `${config.experience} YEARS`]].map(([k, v]) => (
             <div key={k} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 10, color: "#555", letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>{k}</div>
               <div style={{ background: BOARD_BG, border: "1px solid #333", borderRadius: 6, padding: "5px 10px", display: "inline-flex", gap: 2 }}>
-                {v.split("").map((c, i) => <SplitFlapChar key={i} target={c} delay={900 + i * 55} size={mobile ? "sm" : "lg"} />)}
+                {v.split("").map((c, i) =>
+                  c === " "
+                    ? <span key={i} style={{ width: mobile ? "0.6ch" : "0.8ch" }} />
+                    : <SplitFlapChar key={i} target={c} delay={900 + i * 55} size={mobile ? "sm" : "lg"} />
+                )}
               </div>
             </div>
           ))}
