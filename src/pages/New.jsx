@@ -64,6 +64,7 @@ function SplitFlapChar({ target, delay = 0, size = "lg" }) {
 function SolariBoard({ text, label, size = "lg" }) {
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+      {label && <span style={{ fontSize: 11, color: "#888", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>{label}</span>}
       <div style={{
         background: "#0a0a0a", border: "3px solid #2a2a2a", borderRadius: 10,
         padding: size === "sm" ? "10px 14px 8px" : "14px 20px 10px",
@@ -76,7 +77,6 @@ function SolariBoard({ text, label, size = "lg" }) {
             : <SplitFlapChar key={i} target={c} delay={i * 60} size={size} />
         )}
       </div>
-      {label && <span style={{ fontSize: 11, color: "#888", letterSpacing: 2, textTransform: "uppercase" }}>{label}</span>}
     </div>
   );
 }
@@ -468,7 +468,7 @@ export default function New() {
         <div style={{ display: "flex", justifyContent: "center", gap: mobile ? 18 : 36, marginTop: 36, flexWrap: "wrap" }}>
           {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", `${config.experience} YEARS`]].map(([k, v]) => (
             <div key={k} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 10, color: "#555", letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>{k}</div>
+              <div style={{ fontSize: 11, color: "#888", letterSpacing: 2, fontWeight: 700, marginBottom: 6, textTransform: "uppercase" }}>{k}</div>
               <div style={{ background: BOARD_BG, border: "1px solid #333", borderRadius: 6, padding: "5px 10px", display: "inline-flex", gap: 2 }}>
                 {v.split("").map((c, i) =>
                   c === " "
