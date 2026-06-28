@@ -502,19 +502,6 @@ export default function New() {
         </div>
       </section>
 
-      <div style={{ padding: `0 ${px} 18px` }}>
-        <div style={{ position: "relative", height: 36, background: DARK, borderRadius: 8, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <div style={{ display: "flex", gap: 12, position: "absolute" }}>
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} style={{ width: 24, height: 4, background: AMBER, borderRadius: 2, opacity: i % 2 === 0 ? 1 : 0.22 }} />
-            ))}
-          </div>
-          <span style={{ position: "relative", zIndex: 1, fontSize: mobile ? 8 : 10, letterSpacing: mobile ? 1 : 3, color: AMBER, fontWeight: 700, textTransform: "uppercase" }}>
-            {mobile ? "Projects ahead" : "Runway 27L \u2014 Projects ahead"}
-          </span>
-        </div>
-      </div>
-
       <section id="projects" style={{ padding: mobile ? "48px 5vw 64px" : "56px 8vw 80px" }}>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: SKY, textTransform: "uppercase", marginBottom: 10 }}>Portfolio</div>
