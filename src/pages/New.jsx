@@ -23,7 +23,7 @@ const BOARD_BG = "#111111";
 const AMBER    = "#ffffff";
 const CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-:";
 
-function SplitFlapChar({ target, delay = 0, size = "lg" }) {
+function SplitFlapChar({ target, delay = 0, size = "lg", shuffleKey = 0 }) {
   const [display, setDisplay] = useState(" ");
   const rafRef = useRef(null);
   useEffect(() => {
@@ -32,12 +32,13 @@ function SplitFlapChar({ target, delay = 0, size = "lg" }) {
     const totalFrames = (targetIdx + 2) * 3;
     const tick = () => {
       frame++;
-      setDisplay(CHARS[Math.min(Math.floor(frame / 3), targetIdx)] || target);
+      const idx = Math.min(frame, targetIdx);
+      setDisplay(idx >= targetIdx ? target.toUpperCase() : CHARS[idx] || " ");
       if (frame < totalFrames) rafRef.current = setTimeout(tick, 40);
     };
     const t = setTimeout(tick, delay);
     return () => { clearTimeout(t); clearTimeout(rafRef.current); };
-  }, [target, delay]);
+  }, [target, delay, shuffleKey]);
   const sm = size === "sm";
   return (
     <span style={{
@@ -61,7 +62,7 @@ function SplitFlapChar({ target, delay = 0, size = "lg" }) {
   );
 }
 
-function SolariBoard({ text, label, size = "lg" }) {
+function SolariBoard({ text, label, size = "lg", shuffleKey = 0 }) {
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
       {label && <span style={{ fontSize: 11, color: "#888", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>{label}</span>}
@@ -74,7 +75,7 @@ function SolariBoard({ text, label, size = "lg" }) {
         {text.toUpperCase().split("").map((c, i) =>
           c === " "
             ? <span key={i} style={{ width: size === "sm" ? "0.6ch" : "0.8ch" }} />
-            : <SplitFlapChar key={i} target={c} delay={i * 60} size={size} />
+            : <SplitFlapChar key={i} target={c} delay={i * 60} size={size} shuffleKey={shuffleKey} />
         )}
       </div>
     </div>
@@ -410,8 +411,14 @@ function Nav({ navSolid, mobile }) {
 export default function New() {
   const [scrollY, setScrollY] = useState(0);
   const [navSolid, setNavSolid] = useState(false);
+  const [shuffleKey, setShuffleKey] = useState(0);
   const containerRef = useRef(null);
   const mobile = useIsMobile();
+
+  useEffect(() => {
+    const timer = setInterval(() => setShuffleKey(k => k + 1), 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -463,9 +470,9 @@ export default function New() {
 
       <section style={{ background: "#0f0f0f", padding: mobile ? "48px 20px" : "64px 40px", textAlign: "center" }}>
         <p style={{ fontSize: 10, letterSpacing: 3, color: "#555", textTransform: "uppercase", marginBottom: 28 }}>Departure board</p>
-        <SolariBoard text={h.name} label="Passenger" size={mobile ? "sm" : "lg"} />
+        <SolariBoard text={h.name} label="Passenger" size={mobile ? "sm" : "lg"} shuffleKey={shuffleKey} />
         <div style={{ marginTop: 20 }}>
-          <SolariBoard text={h.role} label="Role" size={mobile ? "sm" : "lg"} />
+          <SolariBoard text={h.role} label="Role" size={mobile ? "sm" : "lg"} shuffleKey={shuffleKey} />
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: mobile ? 18 : 36, marginTop: 36, flexWrap: "wrap" }}>
           {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", `${config.experience} YEARS`]].map(([k, v]) => (
@@ -475,7 +482,7 @@ export default function New() {
                 {v.split("").map((c, i) =>
                   c === " "
                     ? <span key={i} style={{ width: mobile ? "0.6ch" : "0.8ch" }} />
-                    : <SplitFlapChar key={i} target={c} delay={900 + i * 55} size={mobile ? "sm" : "lg"} />
+                    : <SplitFlapChar key={i} target={c} delay={900 + i * 55} size={mobile ? "sm" : "lg"} shuffleKey={shuffleKey} />
                 )}
               </div>
             </div>
