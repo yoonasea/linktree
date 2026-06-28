@@ -541,6 +541,9 @@ export default function New() {
               GitHub &#8594;
             </a>
           </div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: "'Courier New', monospace", letterSpacing: 0.5, marginBottom: 30 }}>
+            {config.email}
+          </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 22, display: "flex", flexDirection: mobile ? "column" : "row", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)" }}>&#9992;&#65039; DEV.PORT — Cleared for takeoff</span>
             <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)" }}>&copy; 2026 {h.introName}</span>
