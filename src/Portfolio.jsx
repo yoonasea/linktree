@@ -303,11 +303,17 @@ function ProjectCard({ project }) {
       {/* Image slot */}
       {images.length > 0 ? (
         <div className={`relative h-48 bg-gradient-to-br ${s.img} overflow-hidden`}>
-          <AnimatePresence mode="wait">
-            <motion.img key={activeIdx} src={images[activeIdx]} alt={`${links.title || project.title} screenshot ${activeIdx + 1}`}
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }} className="w-full h-full object-cover" />
-          </AnimatePresence>
+          <div className="relative w-full h-full overflow-hidden">
+            <motion.div
+              animate={{ x: `-${activeIdx * 100}%` }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex h-full"
+            >
+              {images.map((src, i) => (
+                <img key={i} src={src} alt={`${links.title || project.title} screenshot ${i + 1}`} className="w-full h-full object-cover flex-shrink-0 min-w-full" />
+              ))}
+            </motion.div>
+          </div>
           <div className="absolute top-4 right-4">
             <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${s.type}`}>{project.type}</span>
           </div>
