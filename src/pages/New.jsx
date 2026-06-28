@@ -421,21 +421,23 @@ export default function New() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const px = mobile ? "5vw" : "8vw";
   const h = config.hero;
   const MAIN_SKILL_COLORS = { indigo: SKY, violet: SKY, blue: SKY, emerald: MINT };
   const cSkills = config.skills;
   const cProjects = config.projects;
 
   return (
-    <div ref={containerRef} style={{ height: "100vh", overflowY: "auto", fontFamily: "'Segoe UI', system-ui, sans-serif", background: CREAM, color: DARK, scrollBehavior: "smooth" }}>
+    <div style={{ position: "relative", height: "100vh", fontFamily: "'Segoe UI', system-ui, sans-serif", background: CREAM, color: DARK }}>
+
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        <SkyCanvas scrollY={scrollY} />
+      </div>
+
+      <div ref={containerRef} style={{ position: "relative", zIndex: 1, height: "100vh", overflowY: "auto", scrollBehavior: "smooth" }}>
 
       <Nav navSolid={navSolid} mobile={mobile} />
 
       <section style={{ position: "relative", height: "100vh", marginTop: -53, overflow: "hidden", display: "flex", alignItems: "center" }}>
-        <div style={{ position: "absolute", inset: 0 }}>
-          <SkyCanvas scrollY={scrollY} />
-        </div>
         <div style={{ position: "relative", zIndex: 2, padding: mobile ? "0 6vw" : "0 8vw", maxWidth: 680 }}>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: SKY, textTransform: "uppercase", marginBottom: 14, background: "rgba(255,255,255,0.78)", display: "inline-block", padding: "4px 14px", borderRadius: 20, border: "1px solid rgba(79,163,209,0.25)" }}>
             Now boarding &#9992;
@@ -551,6 +553,7 @@ export default function New() {
         </div>
       </footer>
 
+      </div>
     </div>
   );
 }
