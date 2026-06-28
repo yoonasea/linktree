@@ -496,7 +496,7 @@ export default function New() {
           <h2 style={{ fontSize: mobile ? "1.7rem" : "clamp(1.8rem,4vw,2.6rem)", fontWeight: 900, margin: 0 }}>Skills manifest</h2>
           <p style={{ color: "#778", marginTop: 8, fontSize: 14 }}>Everything packed for the journey</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr 1fr" : "repeat(auto-fit,minmax(220px,1fr))", gap: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(auto-fit,minmax(220px,1fr))", gap: 14 }}>
           {cSkills.map(g => {
             const color = MAIN_SKILL_COLORS[g.accent] || SKY;
             return (
