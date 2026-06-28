@@ -490,8 +490,8 @@ export default function New() {
         </div>
       </section>
 
-      <section id="skills" style={{ padding: mobile ? "56px 5vw" : "80px 8vw" }}>
-        <div style={{ textAlign: "center", marginBottom: 44 }}>
+      <section id="skills" style={{ padding: mobile ? "56px 5vw" : "80px 8vw", textAlign: "center" }}>
+        <div style={{ textAlign: "center", marginBottom: 44, background: "rgba(255,255,255,0.75)", padding: "24px 32px", borderRadius: 16, display: "inline-block" }}>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: MINT, textTransform: "uppercase", marginBottom: 10 }}>Tech stack</div>
           <h2 style={{ fontSize: mobile ? "1.7rem" : "clamp(1.8rem,4vw,2.6rem)", fontWeight: 900, margin: 0 }}>Skills manifest</h2>
           <p style={{ color: "#778", marginTop: 8, fontSize: 14 }}>Everything packed for the journey</p>
@@ -521,8 +521,8 @@ export default function New() {
         </div>
       </section>
 
-      <section id="projects" style={{ padding: mobile ? "48px 5vw 64px" : "56px 8vw 80px" }}>
-        <div style={{ textAlign: "center", marginBottom: 44 }}>
+      <section id="projects" style={{ padding: mobile ? "48px 5vw 64px" : "56px 8vw 80px", textAlign: "center" }}>
+        <div style={{ textAlign: "center", marginBottom: 44, background: "rgba(255,255,255,0.75)", padding: "24px 32px", borderRadius: 16, display: "inline-block" }}>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: SKY, textTransform: "uppercase", marginBottom: 10 }}>Portfolio</div>
           <h2 style={{ fontSize: mobile ? "1.7rem" : "clamp(1.8rem,4vw,2.6rem)", fontWeight: 900, margin: 0 }}>Flight log</h2>
           <p style={{ color: "#778", marginTop: 8, fontSize: 14 }}>Projects that have taken off</p>
