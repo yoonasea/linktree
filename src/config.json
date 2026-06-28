@@ -3,18 +3,18 @@
   "github": "https://github.com/yoonasea",
   "linkedin": "https://linkedin.com/in/phuazaiwei/",
   "location": "Singapore",
+  "experience": "7",
   "hero": {
-    "pills": [
-      "7 Years Experience",
-      "AI & Cloud Integrations",
-      "Open to Opportunities"
-    ],
+    "name": "PHUA ZAI WEI",
+    "role": "FULLSTACK DEV",
     "headline": {
-      "prefix": "Full-Stack Engineer with ",
-      "gradient": "Mobile Experience",
-      "suffix": "."
+      "line1": "Fullstack developer.",
+      "accentWord": "Building",
+      "line2": "things",
+      "accentPhrase": "take off."
     },
-    "subtext": "I craft responsive web apps and cross-platform mobile experiences using React and Flutter, and build full-stack prototypes wired to AWS Lambda, Firestore, and Gemini AI\u2014from pixel to pipeline."
+    "introName": "Phua Zai Wei",
+    "introSuffix": " \u2014 a fullstack developer crafting fast, beautiful web experiences from pixel to deployment."
   },
   "skills": [
     {
@@ -39,10 +39,7 @@
       "id": "nekotag",
       "title": "NekoTag",
       "subtitle": "AI-Enabled E-Commerce Platform",
-      "images": [
-        "/images/nekotag_1.png",
-        "/images/nekotag_2.png"
-      ],
+      "images": ["/images/nekotag_1.png", "/images/nekotag_2.png"],
       "visitUrl": "https://neko-tag.web.app",
       "githubUrl": null,
       "bullets": [
@@ -52,38 +49,24 @@
         "Automated DevOps: GitHub Actions pipeline automating linting, unit testing, and multi-cloud deployment on code push."
       ],
       "badges": [
-        "React",
-        "Typescript",
-        "Firebase",
-        "Firestore",
-        "AWS Lambda",
-        "Vitest",
-        "Stripe",
-        "Gemini API",
-        "MCP",
-        "GitHub Actions",
-        "Google OAuth"
-      ]
+        "React", "Typescript", "Firebase", "Firestore", "AWS Lambda",
+        "Vitest", "Stripe", "Gemini API", "MCP", "GitHub Actions", "Google OAuth"
+      ],
+      "from": "SIN", "to": "SFO", "date": "15 JUN 2026", "seat": "12A", "gate": "B4"
     },
     {
       "id": "chrome-ext",
       "title": "New Tab League of Legends",
       "subtitle": "Chrome Extension",
-      "images": [
-        "/images/lol_1.png",
-        "/images/lol_2.png"
-      ],
+      "images": ["/images/lol_1.png", "/images/lol_2.png"],
       "visitUrl": "https://chromewebstore.google.com/detail/new-tab-league-of-legends/nokfioegpdopldlbbbhglnjjbgddbcjk",
       "githubUrl": "https://github.com/yoonasea/new-tab-wallpaper",
       "bullets": [
         "Displays randomized high-quality League of Legends wallpapers with the current time on each new tab.",
         "Published on the Chrome Web Store with 600+ active users."
       ],
-      "badges": [
-        "Chrome Extension",
-        "JavaScript",
-        "Chrome Web Store"
-      ]
+      "badges": ["Chrome Extension", "JavaScript", "Chrome Web Store"],
+      "from": "NRT", "to": "LAX", "date": "22 MAY 2026", "seat": "7C", "gate": "C11"
     },
     {
       "id": "pw",
@@ -97,15 +80,8 @@
         "TOTP-based 2FA code generation with secrets also stored in DynamoDB.",
         "Both passwords and 2FA codes cached locally for offline access."
       ],
-      "badges": [
-        "Flutter",
-        "Dart",
-        "Android",
-        "AWS DynamoDB",
-        "Encryption",
-        "TOTP",
-        "Biometrics"
-      ]
+      "badges": ["Flutter", "Dart", "Android", "AWS DynamoDB", "Encryption", "TOTP", "Biometrics"],
+      "from": "LHR", "to": "DXB", "date": "03 APR 2026", "seat": "3F", "gate": "A22"
     },
     {
       "id": "bus",
@@ -118,132 +94,21 @@
         "Fetches real-time bus timings and visualizes routes via OpenStreetMap",
         "Data from LTA DataMall API"
       ],
-      "badges": [
-        "Flutter",
-        "Dart",
-        "Android",
-        "OpenStreetMap",
-        "AWS Lambda",
-        "LTA DataMall API"
-      ]
+      "badges": ["Flutter", "Dart", "Android", "OpenStreetMap", "AWS Lambda", "LTA DataMall API"],
+      "from": "SYD", "to": "MEL", "date": "18 MAR 2026", "seat": "21D", "gate": "D3"
     },
     {
       "id": "delitrade",
       "title": "De Li Trade",
       "subtitle": "Fengshui Business Landing Page",
-      "images": [
-        "/images/delitrade_1.png",
-        "/images/delitrade_2.png"
-      ],
+      "images": ["/images/delitrade_1.png", "/images/delitrade_2.png"],
       "visitUrl": "https://deli-trade.web.app/",
       "githubUrl": "https://github.com/yoonasea/delitrade-landing-page",
       "bullets": [
         "Designed and deployed a responsive landing page for a fengshui consultant's business on Firebase Hosting."
       ],
-      "badges": [
-        "React",
-        "Firebase"
-      ]
+      "badges": ["React", "Firebase"],
+      "from": "CDG", "to": "SIN", "date": "07 FEB 2026", "seat": "5B", "gate": "F9"
     }
-  ],
-  "claude": {
-    "hero": {
-      "name": "PHUA ZAI WEI",
-      "role": "FULLSTACK DEV",
-      "status": "BOARDING",
-      "gate": "WEB 3.0",
-      "seat": "FRONTEND",
-      "headline": {
-        "line1": "Fullstack developer.",
-        "accentWord": "Building",
-        "line2": "things",
-        "accentPhrase": "take off."
-      },
-      "introName": "Phua Zai Wei",
-      "introSuffix": " \u2014 a fullstack developer crafting fast, beautiful web experiences from pixel to deployment."
-    },
-    "skills": [
-      {
-        "label": "Frontend",
-        "icon": "\uD83D\uDDA5\uFE0F",
-        "color": "sky",
-        "items": ["React", "TypeScript", "Vue.js", "Tailwind CSS", "Framer Motion"]
-      },
-      {
-        "label": "Backend",
-        "icon": "\u2699\uFE0F",
-        "color": "mint",
-        "items": ["Node.js", "Python", "Express", "FastAPI", "PostgreSQL"]
-      },
-      {
-        "label": "DevOps",
-        "icon": "\uD83D\uDE80",
-        "color": "sky",
-        "items": ["Firebase", "AWS Lambda", "AWS DynamoDB", "GitHub Actions", "Docker"]
-      },
-      {
-        "label": "Tools",
-        "icon": "\uD83D\uDEE0\uFE0F",
-        "color": "mint",
-        "items": ["Git", "MCP", "Stripe", "SonarQube", "Gemini API"]
-      }
-    ],
-    "projects": [
-      {
-        "id": "nekotag",
-        "name": "NekoTag",
-        "from": "SIN",
-        "to": "SFO",
-        "date": "15 JUN 2026",
-        "seat": "12A",
-        "gate": "B4",
-        "desc": "A serverless AI-enabled e-commerce platform with secure payments, Google OAuth, and a Gemini-powered admin chatbot for context-aware database workflows.",
-        "tags": ["React", "Firebase", "AWS Lambda", "Stripe", "Gemini AI"]
-      },
-      {
-        "id": "chrome-ext",
-        "name": "New Tab League of Legends",
-        "from": "NRT",
-        "to": "LAX",
-        "date": "22 MAY 2026",
-        "seat": "7C",
-        "gate": "C11",
-        "desc": "A Chrome Extension published on the Chrome Web Store that displays randomized high-quality wallpapers with the current time on each new tab.",
-        "tags": ["Chrome Extension", "JavaScript", "Chrome Web Store"]
-      },
-      {
-        "id": "pw",
-        "name": "Password Manager & 2FA",
-        "from": "LHR",
-        "to": "DXB",
-        "date": "03 APR 2026",
-        "seat": "3F",
-        "gate": "A22",
-        "desc": "An Android Flutter app with encrypted password storage in AWS DynamoDB and TOTP-based 2FA code generation, with offline local caching.",
-        "tags": ["Flutter", "Dart", "AWS DynamoDB", "TOTP", "Encryption"]
-      },
-      {
-        "id": "bus",
-        "name": "Bus Service Timing",
-        "from": "SYD",
-        "to": "MEL",
-        "date": "18 MAR 2026",
-        "seat": "21D",
-        "gate": "D3",
-        "desc": "An Android Flutter app that fetches real-time bus timings via LTA DataMall API and visualizes routes on OpenStreetMap.",
-        "tags": ["Flutter", "Dart", "OpenStreetMap", "AWS Lambda", "LTA API"]
-      },
-      {
-        "id": "delitrade",
-        "name": "De Li Trade",
-        "from": "CDG",
-        "to": "SIN",
-        "date": "07 FEB 2026",
-        "seat": "5B",
-        "gate": "F9",
-        "desc": "A responsive landing page for a fengshui consultant's business, designed and deployed on Firebase Hosting.",
-        "tags": ["React", "Firebase"]
-      }
-    ]
-  }
+  ]
 }

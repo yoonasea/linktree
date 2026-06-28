@@ -9,8 +9,6 @@ const DARK     = "#1a1a2e";
 const BOARD_BG = "#111111";
 const AMBER    = "#f5a623";
 
-const SKILL_COLORS = { sky: SKY, mint: MINT };
-
 function useIsMobile() {
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
@@ -224,9 +222,8 @@ function ProjectCard({ project, index }) {
   const [hovered, setHovered] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const configProject = config.projects.find(p => p.id === project.id) || {};
-  const images = configProject.images || [];
-  const bullets = configProject.bullets || [];
+  const images = project.images || [];
+  const bullets = project.bullets || [];
   const visible = expanded ? bullets : bullets.slice(0, 3);
 
   useEffect(() => {
@@ -249,9 +246,9 @@ function ProjectCard({ project, index }) {
       <div style={{ padding: "14px 18px 12px", borderBottom: "1px solid #efefef", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
         <div style={{ minWidth: 0 }}>
           <div style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase", marginBottom: 3 }}>
-            {configProject.subtitle || project.name}
+            {project.subtitle || project.title}
           </div>
-          <div style={{ fontSize: 16, fontWeight: 800, color: DARK, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{project.name}</div>
+          <div style={{ fontSize: 16, fontWeight: 800, color: DARK, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{project.title}</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "'Courier New', monospace", flexShrink: 0 }}>
           <div style={{ textAlign: "center" }}>
@@ -330,7 +327,7 @@ function ProjectCard({ project, index }) {
           </button>
         )}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 14 }}>
-          {(configProject.badges || project.tags).map(t => (
+          {project.badges.map(t => (
             <span key={t} style={{
               background: "#fff", color: "#222", border: "1.5px solid #333",
               borderRadius: 20, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: 0.2,
@@ -338,15 +335,15 @@ function ProjectCard({ project, index }) {
           ))}
         </div>
         <div style={{ display: "flex", gap: 8 }}>
-          {configProject.visitUrl && (
-            <a href={configProject.visitUrl} target="_blank" rel="noopener noreferrer" style={{
+          {project.visitUrl && (
+            <a href={project.visitUrl} target="_blank" rel="noopener noreferrer" style={{
               flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               background: DARK, color: "#fff", border: "none", borderRadius: 8,
               padding: "9px 0", fontSize: 12, fontWeight: 700, textDecoration: "none", letterSpacing: 0.4,
             }}>&#127760; Live Site</a>
           )}
-          {configProject.githubUrl && (
-            <a href={configProject.githubUrl} target="_blank" rel="noopener noreferrer" style={{
+          {project.githubUrl && (
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" style={{
               flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               background: "#fff", color: DARK, border: `1.5px solid ${DARK}`, borderRadius: 8,
               padding: "9px 0", fontSize: 12, fontWeight: 700, textDecoration: "none", letterSpacing: 0.4,
@@ -416,10 +413,10 @@ export default function New() {
   }, []);
 
   const px = mobile ? "5vw" : "8vw";
-  const h = config.claude.hero;
+  const h = config.hero;
   const MAIN_SKILL_COLORS = { indigo: SKY, violet: SKY, blue: SKY, emerald: MINT };
   const cSkills = config.skills;
-  const cProjects = config.claude.projects;
+  const cProjects = config.projects;
 
   return (
     <div ref={containerRef} style={{ height: "100vh", overflowY: "auto", fontFamily: "'Segoe UI', system-ui, sans-serif", background: CREAM, color: DARK, scrollBehavior: "smooth" }}>
@@ -460,7 +457,7 @@ export default function New() {
           <SolariBoard text={h.role} label="Role" size={mobile ? "sm" : "lg"} />
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: mobile ? 18 : 36, marginTop: 36, flexWrap: "wrap" }}>
-          {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", config.hero.pills[0].replace(/[^0-9]/g, "")]].map(([k, v]) => (
+          {[["LOCATION", config.location.toUpperCase()], ["EXPERIENCE", config.experience]].map(([k, v]) => (
             <div key={k} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 10, color: "#555", letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>{k}</div>
               <div style={{ background: BOARD_BG, border: "1px solid #333", borderRadius: 6, padding: "5px 10px", display: "inline-flex", gap: 2 }}>
