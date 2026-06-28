@@ -18,29 +18,10 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-const HERO_PILLS = [
-  { icon: Layers,   label: "7 Years Experience",      cls: "bg-indigo-50 text-indigo-700 border-indigo-100" },
-  { icon: Sparkles, label: "AI & Cloud Integrations", cls: "bg-violet-50 text-violet-700 border-violet-100" },
-  { icon: Zap,      label: "Open to Opportunities",   cls: "bg-emerald-50 text-emerald-700 border-emerald-100" },
-];
-
-const SKILLS = [
-  {
-    id: "lang", emoji: "\u2328\uFE0F", label: "Languages", accent: "indigo",
-    items: ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "Dart"],
-  },
-  {
-    id: "fw", emoji: "\uD83E\uDDE9", label: "Frameworks & Runtimes", accent: "violet",
-    items: ["React.js", "Vue.js", "Node.js", "Flutter (Android)"],
-  },
-  {
-    id: "cloud", emoji: "\u2601\uFE0F", label: "Cloud & Database", accent: "blue",
-    items: ["Firebase / Firestore", "MSSQL", "AWS Lambda", "AWS S3", "AWS DynamoDB"],
-  },
-  {
-    id: "ai", emoji: "\uD83D\uDEE0\uFE0F", label: "AI & Tooling", accent: "emerald",
-    items: ["Gemini API", "Model Context Protocol (MCP)", "Stripe Integration", "GitHub Actions (CI/CD)", "SonarQube", "Git"],
-  },
+const HERO_PILL_META = [
+  { icon: Layers,   cls: "bg-indigo-50 text-indigo-700 border-indigo-100" },
+  { icon: Sparkles, cls: "bg-violet-50 text-violet-700 border-violet-100" },
+  { icon: Zap,      cls: "bg-emerald-50 text-emerald-700 border-emerald-100" },
 ];
 
 const SKILL_STYLES = {
@@ -188,34 +169,32 @@ function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {HERO_PILLS.map(({ icon: Icon, label, cls }, i) => (
-            <motion.span key={label} custom={i} initial="hidden" animate="visible"
-              variants={{ hidden: { opacity: 0, scale: 0.85 }, visible: (i) => ({ opacity: 1, scale: 1, transition: { delay: 0.1 + i * 0.08, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] } }) }}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border ${cls}`}>
-              <Icon size={12} />{label}
-            </motion.span>
-          ))}
+          {config.hero.pills.map((label, i) => {
+            const { icon: Icon, cls } = HERO_PILL_META[i];
+            return (
+              <motion.span key={label} custom={i} initial="hidden" animate="visible"
+                variants={{ hidden: { opacity: 0, scale: 0.85 }, visible: (i) => ({ opacity: 1, scale: 1, transition: { delay: 0.1 + i * 0.08, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] } }) }}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border ${cls}`}>
+                <Icon size={12} />{label}
+              </motion.span>
+            );
+          })}
         </div>
 
         {/* Headline */}
         <motion.h1 custom={0} initial="hidden" animate="visible" variants={fadeUp}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
-          Full-Stack Engineer with{" "}
+          {config.hero.headline.prefix}
           <span style={{ background: "linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#2563eb 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Mobile Experience
+            {config.hero.headline.gradient}
           </span>
-          <span className="text-slate-700">.</span>
+          <span className="text-slate-700">{config.hero.headline.suffix}</span>
         </motion.h1>
 
         {/* Subtext */}
         <motion.p custom={1} initial="hidden" animate="visible" variants={fadeUp}
           className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10">
-          I craft responsive web apps and cross-platform mobile experiences using{" "}
-          <strong className="font-medium text-slate-700">React</strong> and{" "}
-          <strong className="font-medium text-slate-700">Flutter</strong>, and build full-stack prototypes wired to{" "}
-          <strong className="font-medium text-slate-700">AWS Lambda</strong>,{" "}
-          <strong className="font-medium text-slate-700">Firestore</strong>, and{" "}
-          <strong className="font-medium text-slate-700">Gemini AI</strong>—from pixel to pipeline.
+          {config.hero.subtext}
         </motion.p>
 
         {/* CTAs */}
@@ -256,7 +235,7 @@ function Skills() {
         </motion.div>
 
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ margin: "-80px" }} className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-          {SKILLS.map((cat) => {
+          {config.skills.map((cat) => {
             const s = SKILL_STYLES[cat.accent];
             return (
               <motion.div key={cat.id} variants={cardIn} className={`bg-white rounded-2xl border ${s.card} shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden`}>

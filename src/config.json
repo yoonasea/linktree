@@ -3,6 +3,37 @@
   "github": "https://github.com/yoonasea",
   "linkedin": "https://linkedin.com/in/phuazaiwei/",
   "location": "Singapore",
+  "hero": {
+    "pills": [
+      "7 Years Experience",
+      "AI & Cloud Integrations",
+      "Open to Opportunities"
+    ],
+    "headline": {
+      "prefix": "Full-Stack Engineer with ",
+      "gradient": "Mobile Experience",
+      "suffix": "."
+    },
+    "subtext": "I craft responsive web apps and cross-platform mobile experiences using React and Flutter, and build full-stack prototypes wired to AWS Lambda, Firestore, and Gemini AI\u2014from pixel to pipeline."
+  },
+  "skills": [
+    {
+      "id": "lang", "emoji": "\u2328\uFE0F", "label": "Languages", "accent": "indigo",
+      "items": ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "Dart"]
+    },
+    {
+      "id": "fw", "emoji": "\uD83E\uDDE9", "label": "Frameworks & Runtimes", "accent": "violet",
+      "items": ["React.js", "Vue.js", "Node.js", "Flutter (Android)"]
+    },
+    {
+      "id": "cloud", "emoji": "\u2601\uFE0F", "label": "Cloud & Database", "accent": "blue",
+      "items": ["Firebase / Firestore", "MSSQL", "AWS Lambda", "AWS S3", "AWS DynamoDB"]
+    },
+    {
+      "id": "ai", "emoji": "\uD83D\uDEE0\uFE0F", "label": "AI & Tooling", "accent": "emerald",
+      "items": ["Gemini API", "Model Context Protocol (MCP)", "Stripe Integration", "GitHub Actions (CI/CD)", "SonarQube", "Git"]
+    }
+  ],
   "projects": [
     {
       "id": "nekotag",
