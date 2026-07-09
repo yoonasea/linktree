@@ -285,7 +285,7 @@ function ProjectCard({ project, index }) {
       </div>
 
       {images.length > 0 ? (
-        <div style={{ position: "relative", height: 128, overflow: "hidden", background: "#f5f5f5" }}>
+        <div style={{ position: "relative", height: 200, overflow: "hidden", background: "#f5f5f5" }}>
           <div style={{ display: "flex", height: "100%", transform: `translateX(-${activeIdx * 100}%)`, transition: "transform 0.4s cubic-bezier(.22,1,.36,1)" }}>
             {images.map((src, i) => (
               <img key={i} src={src} alt={`${project.name} screenshot ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", flexShrink: 0 }} />
@@ -311,7 +311,7 @@ function ProjectCard({ project, index }) {
           )}
         </div>
       ) : (
-        <div style={{ height: 96, background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #efefef" }}>
+        <div style={{ height: 106, background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #efefef" }}>
           <span style={{ fontSize: 10, color: "#bbb", fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>No screenshot</span>
         </div>
       )}
@@ -323,7 +323,7 @@ function ProjectCard({ project, index }) {
       </div>
 
       <div style={{ padding: "0 16px 16px" }}>
-        <ul style={{ margin: 0, padding: 0, listStyle: "none", marginBottom: 14 }}>
+        <ul style={{ margin: 0, padding: 0, listStyle: "none", marginBottom: 14, textAlign: "left" }}>
           {visible.map((b, i) => (
             <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: "#555", lineHeight: 1.65, marginBottom: 8 }}>
               <span style={{ marginTop: 7, width: 6, height: 6, borderRadius: "50%", background: SKY, flexShrink: 0 }} />
