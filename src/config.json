@@ -110,5 +110,39 @@
       "badges": ["React", "Firebase"],
       "from": "CDG", "to": "SIN", "date": "07 FEB 2026", "seat": "5B", "gate": "F9"
     }
+  ,
+    {
+      "id": "ketoagent",
+      "title": "KetoAgent",
+      "subtitle": "Lightweight Dockerized AI Agent",
+      "images": ["/images/ketoagent_1.png", "/images/ketoagent_2.png"],
+      "visitUrl": null,
+      "githubUrl": null,
+      "bullets": [
+        "Developed an autonomous AI agent that uses 20x less context than OpenClaw (6k vs 120k).",
+        "Built a plugin-style tool framework with 9 built-in tools (file read/write/list, shell, grep, search_files, apply_patch, web search/fetch) that the agent invokes autonomously to complete tasks.",
+        "Integrated Telegram Bot API for bidirectional messaging.",
+        "Implemented context management with token budget tracking, adaptive message trimming, LLM-based compaction, large-result compression and safety limits (20 iterations, 5 min runtime cap)."
+      ],
+      "badges": ["Docker", "Python", "AI Agent", "Telegram Bot API", "MCP", "Plugin Architecture"],
+      "from": "SIN", "to": "TYO", "date": "10 JUL 2026", "seat": "8A", "gate": "E7"
+    },
+    {
+      "id": "elasticllm",
+      "title": "ElasticLLM",
+      "subtitle": "LLM API Proxy",
+      "images": ["/images/elasticllm_1.png", "/images/elasticllm_2.png"],
+      "visitUrl": null,
+      "githubUrl": null,
+      "bullets": [
+        "Built an OpenAI-compatible API gateway that routes requests across multiple LLM providers (Groq, Gemini) and multiple models into a single API endpoint.",
+        "Distribute requests across multiple models according to weights token limits.",
+        "Implemented retry and failover cycling.",
+        "Built a real-time admin dashboard to monitor token usage and other metrics.",
+        "Added a chatbot with model selection and SSE streaming for testing completions."
+      ],
+      "badges": ["OpenAI API", "Groq", "Gemini", "SSE Streaming", "Dashboard", "TypeScript"],
+      "from": "SFO", "to": "SIN", "date": "01 AUG 2026", "seat": "14C", "gate": "H2"
+    }
   ]
 }
